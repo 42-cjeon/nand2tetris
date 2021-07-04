@@ -1,2 +1,1 @@
-"# nand2tetris" 
-"# nand2tetris" 
+NAND TO TETRIS
