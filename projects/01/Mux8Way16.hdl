@@ -18,5 +18,84 @@ CHIP Mux8Way16 {
     OUT out[16];
 
     PARTS:
-    // Put your code here:
+
+    Not(in=sel[2], out=notSel2);
+
+    And16(
+        a[0..15]=a[0..15], 
+        b[0]=notSel2, b[1]=notSel2, b[2]=notSel2, b[3]=notSel2, 
+        b[4]=notSel2, b[5]=notSel2, b[6]=notSel2, b[7]=notSel2, 
+        b[8]=notSel2, b[9]=notSel2, b[10]=notSel2, b[11]=notSel2, 
+        b[12]=notSel2, b[13]=notSel2, b[14]=notSel2, b[15]=notSel2,
+        out[0..15]=inA
+    );
+    And16(
+        a[0..15]=b[0..15], 
+        b[0]=notSel2, b[1]=notSel2, b[2]=notSel2, b[3]=notSel2, 
+        b[4]=notSel2, b[5]=notSel2, b[6]=notSel2, b[7]=notSel2, 
+        b[8]=notSel2, b[9]=notSel2, b[10]=notSel2, b[11]=notSel2, 
+        b[12]=notSel2, b[13]=notSel2, b[14]=notSel2, b[15]=notSel2,
+        out[0..15]=inB
+    );
+    And16(
+        a[0..15]=c[0..15], 
+        b[0]=notSel2, b[1]=notSel2, b[2]=notSel2, b[3]=notSel2, 
+        b[4]=notSel2, b[5]=notSel2, b[6]=notSel2, b[7]=notSel2, 
+        b[8]=notSel2, b[9]=notSel2, b[10]=notSel2, b[11]=notSel2, 
+        b[12]=notSel2, b[13]=notSel2, b[14]=notSel2, b[15]=notSel2,
+        out[0..15]=inC
+    );
+    And16(
+        a[0..15]=d[0..15], 
+        b[0]=notSel2, b[1]=notSel2, b[2]=notSel2, b[3]=notSel2, 
+        b[4]=notSel2, b[5]=notSel2, b[6]=notSel2, b[7]=notSel2, 
+        b[8]=notSel2, b[9]=notSel2, b[10]=notSel2, b[11]=notSel2, 
+        b[12]=notSel2, b[13]=notSel2, b[14]=notSel2, b[15]=notSel2,
+        out[0..15]=inD
+    );
+    Mux4Way16(
+        a[0..15]=inA, b[0..15]=inB, 
+        c[0..15]=inC, d[0..15]=inD,
+        sel[0..1]=sel[0..1], out[0..15]=outA
+    );
+    
+    And16(
+        a[0..15]=e[0..15], 
+        b[0]=sel[2], b[1]=sel[2], b[2]=sel[2], b[3]=sel[2], 
+        b[4]=sel[2], b[5]=sel[2], b[6]=sel[2], b[7]=sel[2], 
+        b[8]=sel[2], b[9]=sel[2], b[10]=sel[2], b[11]=sel[2], 
+        b[12]=sel[2], b[13]=sel[2], b[14]=sel[2], b[15]=sel[2],
+        out[0..15]=inE
+    );
+    And16(
+        a[0..15]=f[0..15], 
+        b[0]=sel[2], b[1]=sel[2], b[2]=sel[2], b[3]=sel[2], 
+        b[4]=sel[2], b[5]=sel[2], b[6]=sel[2], b[7]=sel[2], 
+        b[8]=sel[2], b[9]=sel[2], b[10]=sel[2], b[11]=sel[2], 
+        b[12]=sel[2], b[13]=sel[2], b[14]=sel[2], b[15]=sel[2],
+        out[0..15]=inF
+    );
+    And16(
+        a[0..15]=g[0..15], 
+        b[0]=sel[2], b[1]=sel[2], b[2]=sel[2], b[3]=sel[2], 
+        b[4]=sel[2], b[5]=sel[2], b[6]=sel[2], b[7]=sel[2], 
+        b[8]=sel[2], b[9]=sel[2], b[10]=sel[2], b[11]=sel[2], 
+        b[12]=sel[2], b[13]=sel[2], b[14]=sel[2], b[15]=sel[2],
+        out[0..15]=inG
+    );
+    And16(
+        a[0..15]=h[0..15], 
+        b[0]=sel[2], b[1]=sel[2], b[2]=sel[2], b[3]=sel[2], 
+        b[4]=sel[2], b[5]=sel[2], b[6]=sel[2], b[7]=sel[2], 
+        b[8]=sel[2], b[9]=sel[2], b[10]=sel[2], b[11]=sel[2], 
+        b[12]=sel[2], b[13]=sel[2], b[14]=sel[2], b[15]=sel[2],
+        out[0..15]=inH
+    );
+    Mux4Way16(
+        a[0..15]=inE, b[0..15]=inF,
+        c[0..15]=inG, d[0..15]=inH,
+        sel[0..1]=sel[0..1], out[0..15]=outB
+    );
+    
+    Or16(a=outA, b=outB, out[0..15]=out[0..15]);
 }
