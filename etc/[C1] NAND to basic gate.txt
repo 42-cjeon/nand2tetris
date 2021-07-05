@@ -1,0 +1,23 @@
+배경지식 : 불 대수 
+
+표기법: 
+  x+y -> x OR y
+  xy  -> x AND y
+  x'  -> NOT x
+
+동일법칙 :
+  A · A = A
+  A + A = A
+  
+드모르간의 법칙 :
+  (A · B)' = A'+ B'
+  (A + B)' = A'· B'
+
+NOT x 와 x NAND x :
+  (xx)' = x' + x' = x'
+
+x OR y 와 (x NAND x) NAND (y NAND y) :
+  ((xx)'(yy)')' = (x'y')' = (x')' + (y')' = x + y
+
+x AND y 와 (x NAND y) NAND (x NAND y) :
+  ((xy)'(xy)')' = ((xy)')' + ((xy)')' = ((xy)')' = xy
