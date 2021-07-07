@@ -42,144 +42,21 @@ CHIP ALU {
         ng; // 1 if (out < 0),  0 otherwise
 
     PARTS:
-        //Or(a=zx, b=zx, out=zxInternal);
-        Not(in=zx, out=notZx);
+        Not16(in=x, out=notX);
+        Mux4Way16(a=x, b=false, c=notX, d=true, sel[0]=zx, sel[1]=nx, out=x1);
+        
+        Not16(in=y, out=notY);
+        Mux4Way16(a=y, b=false, c=notY, d=true, sel[0]=zy, sel[1]=ny, out=y1);
+        
+        And16(a=x1, b=y1, out=andResult);
+        Add16(a=x1, b=y1, out=addResult);
+        Mux16(a=andResult, b=addResult, sel=f, out=preOut);
+        
+        Not16(in=preOut, out=notPreOut);
+        Mux16(a=preOut, b=notPreOut, sel=no, out=out, out[0..7]=out8L, out[8..15]=out8H, out[15]=ng);
 
-        And(a=x[0], b=notZx, out=xZ0);
-        And(a=x[1], b=notZx, out=xZ1);
-        And(a=x[2], b=notZx, out=xZ2);
-        And(a=x[3], b=notZx, out=xZ3);
-        And(a=x[4], b=notZx, out=xZ4);
-        And(a=x[5], b=notZx, out=xZ5);
-        And(a=x[6], b=notZx, out=xZ6);
-        And(a=x[7], b=notZx, out=xZ7);
-        And(a=x[8], b=notZx, out=xZ8);
-        And(a=x[9], b=notZx, out=xZ9);
-        And(a=x[10], b=notZx, out=xZ10);
-        And(a=x[11], b=notZx, out=xZ11);
-        And(a=x[12], b=notZx, out=xZ12);
-        And(a=x[13], b=notZx, out=xZ13);
-        And(a=x[14], b=notZx, out=xZ14);
-        And(a=x[15], b=notZx, out=xZ15);
-
-        Xor(a=xZ0, b=nx, out=xN0);
-        Xor(a=xZ1, b=nx, out=xN1);
-        Xor(a=xZ2, b=nx, out=xN2);
-        Xor(a=xZ3, b=nx, out=xN3);
-        Xor(a=xZ4, b=nx, out=xN4);
-        Xor(a=xZ5, b=nx, out=xN5);
-        Xor(a=xZ6, b=nx, out=xN6);
-        Xor(a=xZ7, b=nx, out=xN7);
-        Xor(a=xZ8, b=nx, out=xN8);
-        Xor(a=xZ9, b=nx, out=xN9);
-        Xor(a=xZ10, b=nx, out=xN10);
-        Xor(a=xZ11, b=nx, out=xN11);
-        Xor(a=xZ12, b=nx, out=xN12);
-        Xor(a=xZ13, b=nx, out=xN13);
-        Xor(a=xZ14, b=nx, out=xN14);
-        Xor(a=xZ15, b=nx, out=xN15);
-
-        Not(in=zy, out=notZy);
-
-        And(a=y[0], b=notZy, out=yZ0);
-        And(a=y[1], b=notZy, out=yZ1);
-        And(a=y[2], b=notZy, out=yZ2);
-        And(a=y[3], b=notZy, out=yZ3);
-        And(a=y[4], b=notZy, out=yZ4);
-        And(a=y[5], b=notZy, out=yZ5);
-        And(a=y[6], b=notZy, out=yZ6);
-        And(a=y[7], b=notZy, out=yZ7);
-        And(a=y[8], b=notZy, out=yZ8);
-        And(a=y[9], b=notZy, out=yZ9);
-        And(a=y[10], b=notZy, out=yZ10);
-        And(a=y[11], b=notZy, out=yZ11);
-        And(a=y[12], b=notZy, out=yZ12);
-        And(a=y[13], b=notZy, out=yZ13);
-        And(a=y[14], b=notZy, out=yZ14);
-        And(a=y[15], b=notZy, out=yZ15);
-
-        Xor(a=yZ0, b=ny, out=yN0);
-        Xor(a=yZ1, b=ny, out=yN1);
-        Xor(a=yZ2, b=ny, out=yN2);
-        Xor(a=yZ3, b=ny, out=yN3);
-        Xor(a=yZ4, b=ny, out=yN4);
-        Xor(a=yZ5, b=ny, out=yN5);
-        Xor(a=yZ6, b=ny, out=yN6);
-        Xor(a=yZ7, b=ny, out=yN7);
-        Xor(a=yZ8, b=ny, out=yN8);
-        Xor(a=yZ9, b=ny, out=yN9);
-        Xor(a=yZ10, b=ny, out=yN10);
-        Xor(a=yZ11, b=ny, out=yN11);
-        Xor(a=yZ12, b=ny, out=yN12);
-        Xor(a=yZ13, b=ny, out=yN13);
-        Xor(a=yZ14, b=ny, out=yN14);
-        Xor(a=yZ15, b=ny, out=yN15);
-
-        And16(
-            a[0]=xN0, a[1]=xN1, a[2]=xN2, a[3]=xN3, 
-            a[4]=xN4, a[5]=xN5, a[6]=xN6, a[7]=xN7, 
-            a[8]=xN8, a[9]=xN9, a[10]=xN10, a[11]=xN11, 
-            a[12]=xN12, a[13]=xN13, a[14]=xN14, a[15]=xN15,
-            b[0]=yN0, b[1]=yN1, b[2]=yN2, b[3]=yN3, 
-            b[4]=yN4, b[5]=yN5, b[6]=yN6, b[7]=yN7,
-            b[8]=yN8, b[9]=yN9, b[10]=yN10, b[11]=yN11, 
-            b[12]=yN12, b[13]=yN13, b[14]=yN14, b[15]=yN15,
-            out=andResult
-        );
-
-        Add16(
-            a[0]=xN0, a[1]=xN1, a[2]=xN2, a[3]=xN3, 
-            a[4]=xN4, a[5]=xN5, a[6]=xN6, a[7]=xN7, 
-            a[8]=xN8, a[9]=xN9, a[10]=xN10, a[11]=xN11, 
-            a[12]=xN12, a[13]=xN13, a[14]=xN14, a[15]=xN15,
-            b[0]=yN0, b[1]=yN1, b[2]=yN2, b[3]=yN3, 
-            b[4]=yN4, b[5]=yN5, b[6]=yN6, b[7]=yN7,
-            b[8]=yN8, b[9]=yN9, b[10]=yN10, b[11]=yN11, 
-            b[12]=yN12, b[13]=yN13, b[14]=yN14, b[15]=yN15,
-            out=addResult
-        );
-
-        Mux16(
-            a=andResult, b=addResult, sel=f, 
-            out[0]=preOut0, out[1]=preOut1, out[2]=preOut2, out[3]=preOut3, 
-            out[4]=preOut4, out[5]=preOut5, out[6]=preOut6, out[7]=preOut7, 
-            out[8]=preOut8, out[9]=preOut9, out[10]=preOut10, out[11]=preOut11, 
-            out[12]=preOut12, out[13]=preOut13, out[14]=preOut14, out[15]=preOut15
-        );
-
-        Xor(a=preout1, b=no, out=nout0);
-        Xor(a=preout2, b=no, out=nout2);
-        Xor(a=preout3, b=no, out=nout3);
-        Xor(a=preout4, b=no, out=nout4);
-        Xor(a=preout5, b=no, out=nout5);
-        Xor(a=preout6, b=no, out=nout6);
-        Xor(a=preout7, b=no, out=nout7);
-        Xor(a=preout8, b=no, out=nout8);
-        Xor(a=preout9, b=no, out=nout9);
-        Xor(a=preout10, b=no, out=nout10);
-        Xor(a=preout11, b=no, out=nout11);
-        Xor(a=preout12, b=no, out=nout12);
-        Xor(a=preout13, b=no, out=nout13);
-        Xor(a=preout14, b=no, out=nout14);
-        Xor(a=preout15, b=no, out=nout15);
-
-        And16(
-            a[0]=nout0, a[1]=nout1, a[2]=nout2, a[3]=nout3, 
-            a[4]=nout4, a[5]=nout5, a[6]=nout6, a[7]=nout7, 
-            a[8]=nout8, a[9]=nout9, a[10]=nout10, a[11]=nout11, 
-            a[12]=nout12, a[13]=nout13, a[14]=nout14, a[15]=nout15, 
-            b=false, out=zr
-        );
-        And(a=nout15, b=true, out=ng);
-
-        Or16(
-            a[0]=preOut0, a[1]=preOut1, a[2]=preOut2, a[3]=preOut3, 
-            a[4]=preOut4, a[5]=preOut5, a[6]=preOut6, a[7]=preOut7, 
-            a[8]=preOut8, a[9]=preOut9, a[10]=preOut10, a[11]=preOut11, 
-            a[12]=preOut12, a[13]=preOut13, a[14]=preOut14, a[15]=preOut15,
-            b[0]=preOut0, b[1]=preOut1, b[2]=preOut2, b[3]=preOut3, 
-            b[4]=preOut4, b[5]=preOut5, b[6]=preOut6, b[7]=preOut7, 
-            b[8]=preOut8, b[9]=preOut9, b[10]=preOut10, b[11]=preOut11, 
-            b[12]=preOut12, b[13]=preOut13, b[14]=preOut14, b[15]=preOut15,
-            out=out
-        );
+        Or8Way(in=out8L, out=zrL);
+        Or8Way(in=out8H, out=zrH);
+        Or(a=zrL, b=zrH, out=notZr);
+        Not(in=notZr, out=zr);
+}
