@@ -23,10 +23,6 @@ CHIP RAM16K {
         RAM4K(in=in, load=load1, address=address[0..11], out=rOut1);
         RAM4K(in=in, load=load2, address=address[0..11], out=rOut2);
         RAM4K(in=in, load=load3, address=address[0..11], out=rOut3);
-        RAM4K(in=in, load=load4, address=address[0..11], out=rOut4);
-        RAM4K(in=in, load=load5, address=address[0..11], out=rOut5);
-        RAM4K(in=in, load=load6, address=address[0..11], out=rOut6);
-        RAM4K(in=in, load=load7, address=address[0..11], out=rOut7);
         Mux4Way16(
             a=rOut0, b=rOut1, c=rOut2, d=rOut3, 
             sel=address[12..13], out=out
