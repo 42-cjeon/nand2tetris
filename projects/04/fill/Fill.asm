@@ -12,19 +12,20 @@
 // the screen should remain fully clear as long as no key is pressed.
 
 
-// KBD = 24576 ~ 24727
+// KBD = 24576
 // SCREEN = 16384 ~ 24575
 @24576
 D=A
 @ScreenEnd
 M=D
-@SCREEN
-D=A
-@ScreenCurrentPtr
-M=D
 
 (START)
+    @SCREEN
+    D=A
+    @ScreenCurrentPtr
+    M=D
     @KBD
+    D=A
     D=M
     @SCREENCLR
     D;JEQ
