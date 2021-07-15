@@ -11,7 +11,6 @@
 // "white" in every pixel;
 // the screen should remain fully clear as long as no key is pressed.
 
-
 // KBD = 24576
 // SCREEN = 16384 ~ 24575
 @24576
