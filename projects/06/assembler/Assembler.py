@@ -43,7 +43,6 @@ while parser.advance():
     except MomoryError as e:
         print(f"[MomoryError] at line {e.line}: {e.message}")
         exit()
-
 parser.close()
 output_file_path = re.match(r'(.*)[.]', input_file_path).group(1) + '.hack'
 

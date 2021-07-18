@@ -14,7 +14,7 @@ class SymbolTable:
         }
         self.cursor = 16
     def add(self, key:str, value:int=None) -> int:
-        if value:
+        if value != None:
             if 0 <= value < 2 ** 16:
                 self.symbols[key] = value
                 return value
