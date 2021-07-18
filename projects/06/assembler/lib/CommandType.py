@@ -1,5 +1,5 @@
-import enum
-class COMMANDTYPE(enum):
-    L=0
-    C=1
+from enum import Enum
+class COMMANDTYPE(Enum):
+    L=0,
+    C=1,
     A=2

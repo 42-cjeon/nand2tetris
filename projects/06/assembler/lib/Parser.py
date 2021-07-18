@@ -2,8 +2,8 @@ import re
 import os
 from itertools import product
 
-from Errors import ParseError
-from CommandType import COMMANDTYPE
+from lib.Errors import ParseError
+from lib.CommandType import COMMANDTYPE
 
 class Parser:
     def __init__(self, input_file_path:str) -> None:
@@ -27,6 +27,7 @@ class Parser:
         self.input_file_path = os.path.abspath(input_file_path)
         self.input_file = open(input_file_path, 'r')
         self.current_line = ''
+        self.valid_line_number = 0
         self.current_line_number = 0
 
     def advance(self) -> bool:
@@ -44,6 +45,7 @@ class Parser:
                     continue
                 else:
                     self.current_line = next_line
+                    self.valid_line_number += 1
                     return True
             else:
                 return False
@@ -53,6 +55,7 @@ class Parser:
         if signature == '@':
             return COMMANDTYPE.A
         elif signature == '(':
+            self.valid_line_number -= 1
             return COMMANDTYPE.L
         else:
             return COMMANDTYPE.C
@@ -64,9 +67,10 @@ class Parser:
     def dest(self) -> str:
         if '=' in self.current_line:
             # AD=A+D -> AD
-            dest = re.search(r'(\w+)=', self.current_line).group(1)
+            dest = re.search(r'(.+)=', self.current_line).group(1)
             dest = ''.join(sorted(dest))
-            if dest == 'A' or dest == 'AD' or dest == 'ADM':
+           
+            if dest in ['A', 'D', 'M', 'AD', 'AM', 'DM', 'ADM']:
                 return dest
             else:
                 raise ParseError(self.input_file_path, self.current_line_number, 'DEST field must be A or M or D')
@@ -79,9 +83,9 @@ class Parser:
         if is_dest_instruction and is_jump_instruction:
             raise ParseError(self.input_file_path, self.current_line_number, 'ambiguous instruction: jump or dest?')
         elif is_dest_instruction:
-            comp = re.search(r'=(\w+)', self.current_line).group(1)
+            comp = re.search(r'=(.+)', self.current_line).group(1)
         elif is_jump_instruction:
-            comp = re.search(r'(\w+);', self.current_line).group(1)
+            comp = re.search(r'(.+);', self.current_line).group(1)
         else:
             raise ParseError(self.input_file_path, self.current_line_number, 'no additional field specified: dest or jump')
         if comp in self.valid_compute:
@@ -91,13 +95,13 @@ class Parser:
 
     def jump(self) -> str:
         if ';' in self.current_line:
-            jump = re.search(r';(\w+)').group(1)
+            jump = re.search(r';(.+)', self.current_line).group(1)
             if jump in self.valid_jump:
                 return jump
             else:
                 raise ParseError(self.input_file_path, self.current_line_number, 'invalid jump field')
         else:
             return 'null'
-            
+
     def close(self) -> None:
         self.input_file.close()
