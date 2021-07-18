@@ -24,7 +24,6 @@ M=D
     @ScreenCurrentPtr
     M=D
     @KBD
-    D=A
     D=M
     @SCREENCLR
     D;JEQ
