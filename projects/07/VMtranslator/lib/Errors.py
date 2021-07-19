@@ -3,7 +3,3 @@ class ParseError(Exception):
         self.file_name = file_name
         self.line = line
         self.message = message
-
-class MomoryError(Exception):
-    def __init__(self, message) -> None:
-        self.message = message
