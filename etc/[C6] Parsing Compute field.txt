@@ -1,0 +1,34 @@
+목표 문법:
+0 1 -1 
+D M A
+!D !A !M
+-D -A -M
+D-1 A-1 M-1
+D+1 1+D
+M+1 1+M
+A+1 1+A
+D+A A+D
+D+M M+D
+D-A A-D
+D-M M-D
+D&A A&D
+D&M M&D
+D|A A|D
+D|M M|D
+
+BNF 표기법:
+compute -> doubleOperand | singleOperand
+	singleOperand -> constant | signedConstant | register | signedRegister
+		constant -> "0" | "1"
+		signedConstant -> "-1"
+		signedRegister -> "-"+register | "!"+register
+		register -> dRegister | mRegister
+			dRegister -> "D"
+			mRegister -> "A" | "M"
+	doubleOperand -> add | inc | dec | sub | and | or
+		add -> dRegister+"+"+mRegister | mRegister+"+"+dRegister
+		inc -> "1"+"+"+register | register+"+"+"1"
+		dec -> register+"-"+"1"
+		sub -> dRegister+"-"+mRegister | mRegister+"-"+dRegister
+		and -> dRegister+"&"+mRegister | mRegister+"&"+dRegister
+		or -> dRegister+"|"+mRegister | mRegister+"|"+dRegister
