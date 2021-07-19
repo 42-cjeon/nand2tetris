@@ -4,6 +4,6 @@ class ParseError(Exception):
         self.line = line
         self.message = message
 
-class MomoryError(Exception):
+class MemoryError(Exception):
     def __init__(self, message) -> None:
         self.message = message
