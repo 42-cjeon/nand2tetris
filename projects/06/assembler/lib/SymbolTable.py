@@ -1,4 +1,4 @@
-from lib.Errors import MomoryError
+from lib.Errors import MemoryError
 
 class SymbolTable:
     def __init__(self) -> None:
@@ -19,14 +19,14 @@ class SymbolTable:
                 self.symbols[key] = value
                 return value
             else:
-                raise MomoryError('invalid memory address (ROM)')
+                raise MemoryError('invalid memory address (ROM)')
         elif self.cursor < 16384:
             current_cursor = self.cursor
             self.symbols[key] = current_cursor
             self.cursor += 1
             return current_cursor
         else:
-            raise MomoryError('Maximum memory address (RAM) exceded [16383]')
+            raise MemoryError('Maximum memory address (RAM) exceded [16383]')
     def get(self, key:str, value:int=None) -> int:
         try:
             return self.symbols[key]
