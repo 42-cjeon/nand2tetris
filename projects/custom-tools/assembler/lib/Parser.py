@@ -62,7 +62,24 @@ class Parser:
     
     def symbol(self) -> str:
         # (Xxx) -> Xxx or @Xxx -> Xxx
-        return re.sub(r'[@\(\)]', '', self.current_line)
+        symbol = re.sub(r'[@\(\)]', '', self.current_line)
+        if len(symbol) < 1:
+            raise ParseError(self.input_file_path, self.current_line_number, 'invalid length of symbol')
+        if symbol[0] == '$':
+            pseudo_symbol = re.match(r'\w+', symbol[1:])
+            if not pseudo_symbol:
+                raise ParseError(self.input_file_path, self.current_line_number, 'invalid length of pseudo symbol')
+            pseudo_symbol = pseudo_symbol.group()
+            if pseudo_symbol == "HERE":
+                if not symbol[6:].isdigit():
+                    raise ParseError(self.input_file_path, self.current_line_number, 'invalid pseudo symbol literal (must INT)')
+                if symbol[5] == '-':
+                    symbol = str(self.valid_line_number - int(symbol[6:]) - 1)
+                elif symbol[5] == '+':
+                    symbol = str(self.valid_line_number + int(symbol[6:]) - 1)
+                else:
+                    raise ParseError(self.input_file_path, self.current_line_number, 'invalid pseudo symbol operator (must + or -)')
+        return symbol
 
     def dest(self) -> str:
         if '=' in self.current_line:
