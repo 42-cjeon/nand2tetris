@@ -1,0 +1,11 @@
+{
+    "add": "@SP\nM=M-1\nA=M\nD=M\nA=A-1\nM=D+M",
+    "sub": "@SP\nM=M-1\nA=M\nD=M\nA=A-1\nM=M-D",
+    "and": "@SP\nM=M-1\nA=M\nD=M\nA=A-1\nM=D&M",
+    "eq": "@SP\nM=M-1\nA=M\nD=M\nA=A-1\nD=M-D\n@$HERE+5\nD;JEQ\nD=0\n@$HERE+3\n0;JMP\nD=-1\n@SP\nA=M-1\nM=D",
+    "gt": "@SP\nM=M-1\nA=M\nD=M\nA=A-1\nD=M-D\n@$HERE+5\nD;JGT\nD=0\n@$HERE+3\n0;JMP\nD=-1\n@SP\nA=M-1\nM=D",
+    "lt": "@SP\nM=M-1\nA=M\nD=M\nA=A-1\nD=M-D\n@$HERE+5\nD;JLT\nD=0\n@$HERE+3\n0;JMP\nD=-1\n@SP\nA=M-1\nM=D",
+    "or": "@SP\nM=M-1\nA=M\nD=M\nA=A-1\nM=D|M",
+    "neg": "@SP\nA=M-1\nM=-M",
+    "not": "@SP\nA=M-1\nM=!M"
+}
