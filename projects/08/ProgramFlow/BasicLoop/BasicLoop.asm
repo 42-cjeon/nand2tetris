@@ -16,7 +16,7 @@ D=M
 @R13
 A=M
 M=D
-(LOOP_START)
+(Sys.init$LOOP_START)
 @0
 D=A
 @ARG
@@ -99,7 +99,7 @@ M=D
 M=M-1
 A=M
 D=M
-@LOOP_START
+@Sys.init$LOOP_START
 D;JNE
 @0
 D=A

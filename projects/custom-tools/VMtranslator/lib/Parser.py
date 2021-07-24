@@ -1,10 +1,12 @@
 import re
+import os
 
 from lib.CommandType import COMMANDTYPE
 from lib.Errors import ParseError
 
 class Parser:
     def __init__(self, input_file_path:str) -> None:
+        self.input_file_name_no_extension = re.match(r"(.*)[.]vm", os.path.split(input_file_path)[1]).group(1)
         self.input_file = open(input_file_path, 'r')
         self.current_line = []
         self.line_number = 0
