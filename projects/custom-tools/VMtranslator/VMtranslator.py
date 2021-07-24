@@ -27,5 +27,12 @@ while parser.advance():
         code_writer.write_arithmetic(parser.get_command())
     elif command_type == COMMANDTYPE.PUSH or command_type == COMMANDTYPE.POP:
         code_writer.write_memory(parser.get_command())
+    elif command_type == COMMANDTYPE.LABEL:
+        code_writer.write_label(parser.get_command())
+    elif command_type == COMMANDTYPE.GOTO:
+        code_writer.write_goto(parser.get_command())
+    elif command_type == COMMANDTYPE.IF:
+        code_writer.write_if(parser.get_command())
+        
 parser.close()
 code_writer.close()

@@ -41,3 +41,15 @@ class CodeWriter:
             assembly = self.memory_commands[command[0]]
             assembly = assembly.format(**self.memory_arg1[command[1]], OFFSET=command[2])
         self.output_file.write(assembly + '\n')
+    
+    def write_label(self, command: list) -> None:
+        assembly = f"({command[1]})"
+        self.output_file.write(assembly + '\n')
+    
+    def write_goto(self, command: list) -> None:
+        assembly = f"@{command[1]}\n0;JMP"
+        self.output_file.write(assembly + '\n')
+
+    def write_if(self, command: list) -> None:
+        assembly = f"@SP\nM=M-1\nA=M\nD=M\n@{command[1]}\nD;JNE"
+        self.output_file.write(assembly + '\n')
