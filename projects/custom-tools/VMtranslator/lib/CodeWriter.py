@@ -25,6 +25,7 @@ class CodeWriter:
             "temp": {"BASE": "5", "TYPE": "A"}
         }
         self.context = {"file": "Sys", "function": "Sys.init"}
+        self.label_constant = 0
 
     def close(self) -> None:
         self.output_file.write("@ENDINFINITYLOOP\n(ENDINFINITYLOOP)\n0;JMP")
@@ -59,3 +60,28 @@ class CodeWriter:
     def write_if(self, command: list) -> None:
         assembly = f"@SP\nM=M-1\nA=M\nD=M\n@{'$'.join([self.context['function'], command[1]])}\nD;JNE"
         self.output_file.write(assembly + '\n')
+
+    def write_function(self, command: list) -> None:
+        self.context["function"] = command[1]
+        assembly = f"({command[1]})\n@SP\nA=M\n" + ("M=0\nA=A+1\n" * int(command[2])) + "D=A\n@SP\nM=D"
+        self.output_file.write(assembly + '\n')
+
+    def write_call(self, command: list) -> None:
+        return_address = f'RETURN_ADDRESS_{self.label_constant}'
+        push_command = '@{POINTER}\nD=M\n@SP\nM=M+1\nA=M-1\nM=D'
+        self.write_memory(['push', 'constant', return_address])
+        self.output_file.write(push_command.format(POINTER='LCL') + '\n')
+        self.output_file.write(push_command.format(POINTER='ARG') + '\n')
+        self.output_file.write(push_command.format(POINTER='THIS') + '\n')
+        self.output_file.write(push_command.format(POINTER='THAT') + '\n')
+        self.output_file.write(f'@{command[2]}\nD=A\n@5\nD=D+A\n@SP\nD=M-D\n@ARG\nM=D' + '\n')
+        self.output_file.write(f'@SP\nD=M\n@LCL\nM=D\n@{command[1]}\n0;JMP' + '\n')
+        self.output_file.write(f"({return_address})"+ '\n')
+        self.label_constant += 1
+
+    def write_return(self) -> None:
+        self.output_file.write('@LCL\nD=M\n@R13\nM=D\n@5\nA=D-A\nD=M\n@R14\nM=D\n@SP\nM=M-1\nA=M\nD=M\n@ARG\nA=M\nM=D\nD=A\n@SP\nM=D+1\n@R13\nAM=M-1\nD=M\n@THAT\nM=D\n@R13\nAM=M-1\nD=M\n@THIS\nM=D\n@R13\nAM=M-1\nD=M\n@ARG\nM=D\n@R13\nAM=M-1\nD=M\n@LCL\nM=D\n@R14\nA=M\n0;JMP' + '\n')
+
+    def write_init(self) -> None:
+        self.output_file.write('@256\nD=A\n@SP\nM=D' + '\n')
+        self.write_call(['call', 'Sys.init', '0'])
