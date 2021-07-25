@@ -1,0 +1,68 @@
+class Main {
+    function void main() {
+        var String expression;
+        var int i, length, pos, a, b, oper, result;
+        var bool isA;
+        var char c;
+
+        while(true) {
+            let expression = Keyboard.readLine("ENTER expr (q to exit) : ");
+            let length = expression.length();
+            let pos = 1;
+            let a = 0;
+            let b = 0;
+            let i = 0;
+            let isA = false;
+            while(i < length) {
+                let c = expression.charAt(length - i - 1);
+                if((c = 81) | (c = 113)) {
+                    return;
+                }
+                if( (48 > c) | (c > 57) ) { // if not NUMBER
+                    let isA=true;
+                    let pos = 1;
+                    let oper = 0;
+                    if(c = 43) {
+                        let oper = 1;
+                    }
+                    if(c = 45) {
+                        let oper = 2;
+                    }
+                    if(c = 42) {
+                        let oper = 3;
+                    }
+                    if(c = 47) {
+                        let oper = 4;
+                    }
+                }
+                else {
+                    if(isA) {
+                        let a = (a + ((c - 48) * pos));
+                    }
+                    else {
+                        let b = (b + ((c - 48) * pos));
+                    }
+                    let pos = pos * 10;
+                }
+                let i = i + 1;
+            }
+            let result = 0;
+            if(oper = 1) {
+                let result = a + b;
+            }
+            if(oper = 2) {
+                let result = a - b;
+            }
+            if(oper = 3) {
+                let result = a * b;
+            }
+            if(oper = 4) {
+                let result = a / b;
+            }
+            do Output.printString("result is: ");
+            do Output.printInt(result);
+            do Output.println();
+        }
+        return;
+    }
+}
