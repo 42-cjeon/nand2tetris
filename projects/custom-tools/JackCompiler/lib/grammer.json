@@ -1,0 +1,1158 @@
+{
+    "keyword": [
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "class$"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "constructor$"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "method$"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "function$"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "var$"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "static$"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "field$"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "int$"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "char$"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "boolean$"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "void$"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "let$"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "do$"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "if$"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "else$"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "while$"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "return$"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "true$"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "false$"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "null$"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "this$"
+            }
+        ]
+    ],
+    "symbol": [
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "\\{"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "\\}"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "\\["
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "\\]"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "\\("
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "\\)"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": ","
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "[.]"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": ";"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "="
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "\\+"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "-"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "\\*"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "/"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "&"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "\\|"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "~"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "<"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": ">"
+            }
+        ]
+    ],
+    "integerConstant": [
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "\\d+$"
+            }
+        ]
+    ],
+    "stringConstant": [
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "\"[^\"\\r\\n]*\"$"
+            }
+        ]
+    ],
+    "identifier": [
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "[a-zA-Z_]\\w*$"
+            }
+        ]
+    ],
+    "class": [
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "class$"
+            }
+        ],
+        [
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "className"
+            }
+        ],
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "\\{"
+            }
+        ],
+        [      
+            {
+                "isTerminal": false,
+                "repeat": "*",
+                "value": "classVarDec"
+            }
+        ],
+        [
+            {
+                "isTerminal": false,
+                "repeat": "*",
+                "value": "subroutineDec"
+            }
+        ],
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "\\}"
+            }
+        ]
+    ],
+    "classVarDec": [
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "static$"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "field$"
+            }
+        ],
+        [
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "type"
+            }
+        ],
+        [
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "varName"
+            }
+        ],
+        [
+            {
+                "isTerminal": false,
+                "repeat": "*",
+                "value": "varNameRepeat"
+            }
+        ],
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": ";"
+            }
+        ]
+    ],
+    "type": [
+        [
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "className"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "int$"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "char$"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "boolean$"
+            }
+        ]
+    ],
+    "subroutineDec": [
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "constructor$"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "function$"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "method$"
+            }
+        ],
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "void$"
+            },
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "type"
+            }
+        ],
+        [
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "subroutineName"
+            }
+        ],
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "\\("
+            }
+        ],
+        [
+            {
+                "isTerminal": false,
+                "repeat": "?",
+                "value": "parameterList"
+            }
+        ],
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "\\)"
+            }
+        ],
+        [
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "subroutineBody"
+            }
+        ]
+    ],
+    "parameterList": [
+        [
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "parameter"
+            }
+        ],
+        [
+            {
+                "isTerminal": false,
+                "repeat": "*",
+                "value": "parameterRepeat"
+            }
+        ]
+    ],
+    "parameter": [
+        [
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "type"
+            }
+        ],
+        [
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "varName"
+            }
+        ]
+    ],
+    "parameterRepeat": [
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": ","
+            }
+        ],
+        [
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "parameter"
+            }
+        ]
+    ],
+    "subroutineBody": [
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "\\{"
+            }
+        ],
+        [
+            {
+                "isTerminal": false,
+                "repeat": "*",
+                "value": "varDec"
+            }
+        ],
+        [
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "statements"
+            }
+        ],
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "\\}"
+            }
+        ]
+    ],
+    "varDec": [
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "var$"
+            }
+        ],
+        [
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "type"
+            }
+        ],
+        [
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "varName"
+            }
+        ],
+        [
+            {
+                "isTerminal": false,
+                "repeat": "*",
+                "value": "varNameRepeat"
+            }
+        ],
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": ";"
+            }
+        ]
+    ],
+    "className": [
+        [
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "identifier"
+            }
+        ]
+    ],
+    "subroutineName": [
+        [
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "identifier"
+            }
+        ]
+    ],
+    "varName": [
+        [
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "identifier"
+            }
+        ]
+    ],
+    "varNameRepeat": [
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": ","
+            }
+        ],
+        [
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "varName"
+            }
+        ]
+    ],
+    "statements": [
+        [
+            {
+                "isTerminal": false,
+                "repeat": "*",
+                "value": "statement"
+            }
+        ]
+    ],
+    "statement": [
+        [
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "letStatement"
+            },
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "ifStatement"
+            },
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "whileStatement"
+            },
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "doStatement"
+            },
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "returnStatement"
+            }
+        ]
+    ],
+    "letStatement": [
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "let$"
+            }
+        ],
+        [
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "indexedVarName"
+            },
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "varName"
+            }
+        ],
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "="
+            }
+        ],
+        [
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "expression"
+            }
+        ],
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": ";"
+            }
+        ]
+    ],
+    "ifStatement": [
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "if$"
+            }
+        ],
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "\\("
+            }
+        ],
+        [
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "expression"
+            }
+        ],
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "\\)"
+            }
+        ],
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "\\{"
+            }
+        ],
+        [
+            {
+                "isTerminal": false,
+                "repeat": "?",
+                "value": "statements"
+            }
+        ],
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "\\}"
+            }
+        ],
+        [
+            {
+                "isTerminal": false,
+                "repeat": "?",
+                "value": "elseStatement"
+            }
+        ]
+    ],
+    "elseStatement": [
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "else$"
+            }
+        ],
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "\\{"
+            }
+        ],
+        [
+            {
+                "isTerminal": false,
+                "repeat": "?",
+                "value": "statements"
+            }
+        ],
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "\\}"
+            }
+        ]
+    ],
+    "whileStatement": [
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "while$"
+            }
+        ],
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "\\("
+            }
+        ],
+        [
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "expression"
+            }
+        ],
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "\\)"
+            }
+        ],
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "\\{"
+            }
+        ],
+        [
+            {
+                "isTerminal": false,
+                "repeat": "?",
+                "value": "statements"
+            }
+        ],
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "\\}"
+            }
+        ]
+    ],
+    "doStatement": [
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "do$"
+            }
+        ],
+        [
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "subroutineCall"
+            }
+        ],
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": ";"
+            }
+        ]
+    ],
+    "returnStatement": [
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "return$"
+            }
+        ],
+        [
+            {
+                "isTerminal": false,
+                "repeat": "?",
+                "value": "expression"
+            }
+        ],
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": ";"
+            }
+        ]
+    ],
+    "expression": [
+        [
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "term"
+            }
+        ],
+        [
+            {
+                "isTerminal": false,
+                "repeat": "*",
+                "value": "operatedTerm"
+            }
+        ]
+    ],
+    "expressionRepeat": [
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": ","
+            }
+        ],
+        [
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "expression"
+            }
+        ]
+    ],
+    "expressionList": [
+        [
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "expression"
+            }
+        ],
+        [
+            {
+                "isTerminal": false,
+                "repeat": "*",
+                "value": "expressionRepeat"
+            }
+        ]
+    ],
+    "indexedVarName": [
+        [
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "varName"
+            }
+        ],
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "\\["
+            }
+        ],
+        [
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "expression"
+            }
+        ],
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "\\]"
+            }
+        ]
+    ],
+    "parenthesizedExpression": [
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "\\("
+            }
+        ],
+        [
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "expression"
+            }
+        ],
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "\\)"
+            }
+        ]
+    ],
+    "term": [
+        [
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "subroutineCall"
+            },
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "indexedVarName"
+            },
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "integerConstant"
+            },
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "stringConstant"
+            },
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "keywordConstant"
+            },
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "parenthesizedExpression"
+            },
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "unaryOperatedTerm"
+            },
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "varName"
+            }
+        ]
+    ],
+    "unaryOperatedTerm": [
+        [
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "unaryOp"
+            }
+        ],
+        [
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "term"
+            }
+        ]
+    ],
+    "operatedTerm": [
+        [
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "op"
+            }
+        ],
+        [
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "term"
+            }
+        ]
+    ],
+    "propertyAccess": [
+        [
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "className"
+            },
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "varName"
+            }
+        ],
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "[.]"
+            }
+        ]
+    ],
+    "subroutineCall": [
+        [
+            {
+                "isTerminal": false,
+                "repeat": "?",
+                "value": "propertyAccess"
+            }
+        ],
+        [
+            {
+                "isTerminal": false,
+                "repeat": null,
+                "value": "subroutineName"
+            }
+        ],
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "\\("
+            }
+        ],
+        [
+            {
+                "isTerminal": false,
+                "repeat": "?",
+                "value": "expressionList"
+            }
+        ],
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "\\)"
+            }
+        ]
+    ],
+    "op": [
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "\\+"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "-"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "\\*"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "/"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "&"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "\\|"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "<"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": ">"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "="
+            }
+        ]
+    ],
+    "unaryOp": [
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "-"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "~"
+            }
+        ]
+    ],
+    "keywordConstant": [
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "true$"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "false$"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "null$"
+            },
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "this$"
+            }
+        ]
+    ]
+}

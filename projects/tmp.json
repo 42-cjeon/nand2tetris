@@ -1,0 +1,11 @@
+{
+    "identifier": [
+        [
+            {
+                "isTerminal": true,
+                "repeat": null,
+                "value": "[a-zA-Z_]\\w*$"
+            }
+        ]
+    ]
+}
