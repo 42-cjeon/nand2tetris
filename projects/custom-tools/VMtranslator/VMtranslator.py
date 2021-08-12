@@ -7,7 +7,7 @@ from lib.CodeWriter import CodeWriter
 from lib.CommandType import COMMANDTYPE
 
 if len(sys.argv) != 2:
-    print('[Invalid args] usage: python assembler.py <input file/folder path>')
+    print('[Invalid args] usage: python VMtranslator.py <input file/folder path>')
     exit(1)
 
 input_path = sys.argv[1]
@@ -21,7 +21,7 @@ elif os.path.isdir(input_path):
     if not os.path.isfile(os.path.join(input_path, 'Sys.vm')):
         print('[!] Sys.vm not found')
         exit(1)
-    input_files = [os.path.join(input_path, vmfile) for vmfile in os.listdir(input_path) if re.match(r".*(?<!Sys)[.]vm", vmfile)]
+    input_files = [os.path.join(input_path, vmfile) for vmfile in os.listdir(input_path) if re.match(r".*(?<!Sys)[.]vm$", vmfile)]
     input_files = [os.path.join(input_path, 'Sys.vm'), *input_files]
     output_file_path = os.path.join(input_path, os.path.split(input_path)[1] + '.asm')
     code_writer = CodeWriter(output_file_path)
